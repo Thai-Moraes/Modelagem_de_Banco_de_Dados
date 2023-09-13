@@ -1,0 +1,38 @@
+- Se ao redor do relacionamento, as duas tiverem 'n' na cardinalidade máxima, vai se tornar uma tabela
+- Chave Primária sempre vem no topo, chave estrangueira no final
+
+n = tamanho do valor
+
+int: inteiro que aceita valores de até 2147483647
+char(n):  [Texto que NÃO altera de tamanho (valor fixo)]
+varchar(n): [Texto que altera de tamanho (valor mutável)]
+date
+bigint: inteiro que aceita valores de -9223372036854775808 a +9223372036854775807
+
+-------------------------------------------------------------------///---------------------------------------------------------
+
+mysql
+senha: alunolab
+; - OBRIGATÓRIO NO FINAL DE CADA CÓDIGO
+
+use XXXX: entrar num banco de dados
+status: mostra em que database você está, além de outros
+create database XXXX: criar banco de dados
+show (alguma coisa): mostrar algo, como DATABASES, TABLES etc - usar plural
+
+create table XXXX ( nome tipo atributo )
+
+auto_increment: aumenta progressivamente, como matrícula
+not null: não nulo, obrigatório - chave primária já se torna 'not null'
+unique: valor único, não se pode repetir
+
+desc XXXXX (table): mostrar as colunas de uma determinada tabela
+
++-----------+-------------+------+-----+---------+----------------+
+| Field     | Type        | Null | Key | Default | Extra          |
++-----------+-------------+------+-----+---------+----------------+
+| matricula | int         | NO   | PRI | NULL    | auto_increment |
+| nome      | varchar(80) | NO   |     | NULL    |                |
+| formacao  | varchar(30) | YES  |     | NULL    |                |
++-----------+-------------+------+-----+---------+----------------+
+
