@@ -31,18 +31,22 @@ insert into estuda values (null, 3007, 2023080);
 insert into disciplina values ( 101, 'Programação' );
 insert into disciplina values ( null, 'Redes' );
 insert into disciplina values ( null, 'Tratamento de Imagens' );
+insert into disciplina values (null, 'Lógica de programação');
 
 insert into possui values (01, 101, 2023080);
 insert into possui values (null, 102, 2023080);
 insert into possui values (null, 103, 2023090);
+insert into possui values (null, 104, 2023080);
 
 insert into professor values ( 2001, 'Sérgio', 'Informática' );
 insert into professor values ( null, 'Vicente', 'Informática' );
 insert into professor values ( null, 'Flávia', 'Design' );
+insert into professor values ( null, 'Jefferson Bradão', 'Informática' );
 
 insert into leciona values (1001, 101, 2001);
 insert into leciona values (null, 102, 2002);
 insert into leciona values (null, 103, 2003);
+insert into leciona values (null, 104, 2004);
 
 alter table estuda add constraint fkmat foreign key (fk_Aluno_matricula) references aluno (matricula);
 alter table estuda add constraint fknum foreign key (fk_Turma_numero) references turma (numero);
@@ -50,3 +54,7 @@ alter table possui add constraint fkdiscod foreign key (fk_Disciplina_cod_discip
 alter table possui add constraint fknumpossui foreign key (fk_Turma_numero) references turma (numero);
 alter table leciona add constraint fkdiscodis foreign key (fk_Disciplina_cod_disciplina) references disciplina (cod_disciplina);
 alter table leciona add constraint fkprof foreign key (fk_Professor_matricula) references professor (matricula);
+
+update professor set nome = 'Vicente Orsino' where matricula = 2002;
+update aluno set nascimento = '2006-06-03' where matricula = 3006;
+alter table professor add email varchar(60) after nome;
