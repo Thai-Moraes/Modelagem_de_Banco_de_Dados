@@ -15,8 +15,11 @@ insert into aluno values ( null, 'Josefina Winter', '1945-02-10', '200.009.342-2
 insert into aluno values (null, "Ana Carolina",'2001-07-11', '203.456.864-02', 'Maria Carolina', 'ac@email.com');
 insert into aluno ( matricula, nome, nascimento, cpf, responsavel, email) values (null, "Elias Sherman",'1995-03-02', '203.458.864-24', 'John Sherman', 'es@email.com');
 insert into aluno ( nome, cpf, responsavel) values ('Waldiney Mouse', '123.456.789-06', 'Wesley Keyboard');
+insert into aluno values ( null, 'Renata Mouse', '2004-04-05', '200.009.342-22', 'Wesley Keyboard', 'rm@email.com' );
 insert into aluno (  cpf, matricula, nome, responsavel, email) values ('123.456.789-07', null, 'Genivaldo Williams', 'Clotilde Williams', 'gw@email.com');
 insert into aluno values ( null, 'Judite Presley', '2000-03-14', '204.506.342-01', 'Alberto Presley', 'judinha@email.com' );
+insert into aluno values ( null, 'Mouse Sherman Willians', '2015-09-12', '123.456.789-12', 'Cpu Sherman', null);
+
 
 insert into turma values ( 2023080, 'M', 'Técnico de Informática' );
 insert into turma values ( 2023090, 'T', 'Técnico em Comunicação Visual' );
@@ -60,6 +63,7 @@ alter table leciona add constraint fkprof foreign key (fk_Professor_matricula) r
 
 update professor set nome = 'Vicente Orsino' where matricula = 2002;
 update aluno set nascimento = '2006-06-03' where matricula = 3006;
+update aluno set nome = 'Renata Mouse Silva' where matricula = 3009;
 update disciplina set nome = 'Programação Python' where cod_disciplina = 101;
 
 update professor set email = 'vo@gmail.com' where matricula = 2002;
@@ -67,5 +71,10 @@ update professor set email = 'sergiodamassa@gmail.com' where matricula = 2001;
 update professor set email = 'flaviaprof@gmail.com' where matricula = 2003;
 update professor set email = 'jb@gmail.com' where matricula = 2004;
 
+update professor set dependentes = 3 where matricula = 2001;
+update professor set dependentes = 0 where matricula = 2002;
+update professor set dependentes = 2 where matricula = 2004;
+
 
 alter table professor add email varchar(60) after nome;
+alter table professor add dependentes int after formacao;

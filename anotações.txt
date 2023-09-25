@@ -36,3 +36,126 @@ desc XXXXX (table): mostrar as colunas de uma determinada tabela
 | formacao  | varchar(30) | YES  |     | NULL    |                |
 +-----------+-------------+------+-----+---------+----------------+
 
+select * (TUDO) from aluno where TABELA = (<, >, <=, >=, !=, is, is not, in) INFORMAÇÃO
+ex: 	select * from aluno where email is null;
+	select matricula, nome from aluno order by nome;
+	select * from aluno where matricula in (3003, 3006, 3007);
+
+select avg(COLUNA) from TABELA; - faz a média dos valores da coluna
+select count(COLUNA) from TABELA; - conta os valores da coluna (where para ser mais específico)
+select sum(COLUNA) from TABELA; - soma os valores da coluna
+select max(COLUNA) from TABELA; - valor máximo da coluna
+select min(COLUNA) from TABELA; - valor mínimo da coluna
+
+select COLUNAS from TABELA where month(DATA) = VALOR; - mês de data
+select COLUNAS from TABELA where monthname(DATA) = VALOR; - mês de data, em extenso
+select COLUNAS from TABELA where day(DATA) = VALOR; - dia de data
+select COLUNAS from TABELA where year(DATA) = VALOR; - ano de data
+
+select concat('Nome do aluno: ', nome) from aluno; - junta o 'Nome do aluno: ' com a coluna da tabela aluno nome
++---------------------------------------+
+| concat('Nome do aluno: ', nome)       |
++---------------------------------------+
+| Nome do aluno: Godofredo Henrique     |
+| Nome do aluno: Josefina Winter        |
+| Nome do aluno: Ana Carolina           |
+| Nome do aluno: Elias Sherman          |
+| Nome do aluno: Waldiney Mouse         |
+| Nome do aluno: Genivaldo Williams     |
+| Nome do aluno: Judite Presley         |
+| Nome do aluno: Renata Mouse Silva     |
+| Nome do aluno: Mouse Sherman Willians |
++---------------------------------------+
+
+select concat('Nome: ', nome, ' - E-mail: ', email) from aluno where email is not null; - junta essas expressões quando o email NÃO é vazio
++--------------------------------------------------+
+| concat('Nome: ', nome, ' - E-mail: ', email)     |
++--------------------------------------------------+
+| Nome: Ana Carolina - E-mail: ac@email.com        |
+| Nome: Elias Sherman - E-mail: es@email.com       |
+| Nome: Godofredo Henrique - E-mail: gh@email.com  |
+| Nome: Genivaldo Williams - E-mail: gw@email.com  |
+| Nome: Judite Presley - E-mail: judinha@email.com |
+| Nome: Renata Mouse Silva - E-mail: rm@email.com  |
++--------------------------------------------------+
+
+select concat('Nome: ', nome, ' - Data de Nascimento: ', nascimento) from aluno; - A mesma coisa, com datas de nascimento
++---------------------------------------------------------------+
+| concat('Nome: ', nome, ' - Data de Nascimento: ', nascimento) |
++---------------------------------------------------------------+
+| Nome: Godofredo Henrique - Data de Nascimento: 2000-03-15     |
+| Nome: Josefina Winter - Data de Nascimento: 1945-02-10        |
+| Nome: Ana Carolina - Data de Nascimento: 2001-07-11           |
+| Nome: Elias Sherman - Data de Nascimento: 1995-03-02          |
+| Nome: Waldiney Mouse - Data de Nascimento: 2006-06-03         |
+| Nome: Genivaldo Williams - Data de Nascimento: 2006-06-03     |
+| Nome: Judite Presley - Data de Nascimento: 2000-03-14         |
+| Nome: Renata Mouse Silva - Data de Nascimento: 2004-04-05     |
+| Nome: Mouse Sherman Willians - Data de Nascimento: 2015-09-12 |
++---------------------------------------------------------------+
+
+select upper(nome) from aluno; - nome em UPPERCASE
++------------------------+
+| upper(nome)            |
++------------------------+
+| GODOFREDO HENRIQUE     |
+| JOSEFINA WINTER        |
+| ANA CAROLINA           |
+| ELIAS SHERMAN          |
+| WALDINEY MOUSE         |
+| GENIVALDO WILLIAMS     |
+| JUDITE PRESLEY         |
+| RENATA MOUSE SILVA     |
+| MOUSE SHERMAN WILLIANS |
++------------------------+
+
+select lower(nome) from aluno; - nome em lowercase
++------------------------+
+| lower(nome)            |
++------------------------+
+| godofredo henrique     |
+| josefina winter        |
+| ana carolina           |
+| elias sherman          |
+| waldiney mouse         |
+| genivaldo williams     |
+| judite presley         |
+| renata mouse silva     |
+| mouse sherman willians |
++------------------------+
+
+select aluno.nome, turma.definicao, turma.turno from aluno, turma, estuda where aluno.matricula = estuda.fk_Aluno_matricula and turma.numero = estuda.fk_Turma_numero;
+
++--------------------+----------------------------------+-------+
+| nome               | definicao                        | turno |
++--------------------+----------------------------------+-------+
+| Godofredo Henrique | Técnico em Comunicação Visual    | T     |
+| Elias Sherman      | Técnico de Informática           | M     |
+| Josefina Winter    | Técnico de Informática           | M     |
+| Ana Carolina       | Técnico em Comunicação Visual    | T     |
+| Waldiney Mouse     | Técnico de Informática           | M     |
+| Genivaldo Williams | Técnico em Comunicação Visual    | T     |
+| Genivaldo Williams | Técnico de Informática           | M     |
+| Judite Presley     | Tecnologia de Comunicação Visual | M     |
++--------------------+----------------------------------+-------+
+
+select aluno.nome, disciplina.nome from aluno, turma, estuda, possui, disciplina where aluno.matricula = estuda.fk_Aluno_matricula and estuda.fk_turma_numero = turma.numero and turma.numero = possui.fk_turma_numero and possui.fk_disciplina_cod_disciplina = disciplina.cod_disciplina;
++--------------------+-----------------------+
+| nome               | nome                  |
++--------------------+-----------------------+
+| Godofredo Henrique | Tratamento de Imagens |
+| Elias Sherman      | Lógica de programação |
+| Elias Sherman      | Redes                 |
+| Elias Sherman      | Programação Python    |
+| Josefina Winter    | Lógica de programação |
+| Josefina Winter    | Redes                 |
+| Josefina Winter    | Programação Python    |
+| Ana Carolina       | Tratamento de Imagens |
+| Waldiney Mouse     | Lógica de programação |
+| Waldiney Mouse     | Redes                 |
+| Waldiney Mouse     | Programação Python    |
+| Genivaldo Williams | Tratamento de Imagens |
+| Genivaldo Williams | Lógica de programação |
+| Genivaldo Williams | Redes                 |
+| Genivaldo Williams | Programação Python    |
++--------------------+-----------------------+
