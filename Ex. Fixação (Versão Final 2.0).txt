@@ -1,14 +1,18 @@
-01 - select nome, email from aluno where email is not null;
+01 - select nome, email from aluno where email is not null; 
+	select nome as 'Aluno:', email as 'E-mail:' from aluno where email is not null; 
+	select nome 'Aluno:', email 'E-mail:' from aluno where email is not null;
 
 02 - select nome from professor where formacao = 'Informática' order by nome;
 
-03 - select * from aluno where matricula >= 3004 and matricula <= 3008;
+03 - select * from aluno where matricula >= 3004 and matricula <= 3008; 	
+	select * from aluno where matricula between 3004 and 3008; 
 
 04 - select numero from turma where definicao = 'Técnico de Informática';
 
-05 - select turma.numero, disciplina.nome from turma, possui, disciplina where turma.numero = possui.fk_turma_numero and disciplina.cod_disciplina = possui.fk_disciplina_cod_disciplina and turma.definicao = 'Técnico de Informática';
+05 - select turma.numero, disciplina.nome from turma, possui, disciplina where turma.numero = possui.fk_turma_numero and disciplina.cod_disciplina = possui.fk_disciplina_cod_disciplina and turma.definicao = 'Técnico de Informática'; 
 
-06 - select count(definicao) from turma where definicao = 'Técnico de Informática';
+06 - select count(definicao) from turma where definicao = 'Técnico de Informática'; 
+	select count(definicao) as 'Total Turma TI' from turma where definicao = 'Técnico de Informática'; 
 
 07 - select * from aluno where year(nascimento) = 2000;
 
